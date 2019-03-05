@@ -12,6 +12,7 @@
         <module>springcloud-eurekaserver</module>
         <module>springcloud-common</module>
         <module>springcloud-api</module>
+        <module>springcloud-member</module>
     </modules>
 
     <parent>
