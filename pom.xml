@@ -11,6 +11,7 @@
     <modules>
         <module>springcloud-eurekaserver</module>
         <module>springcloud-common</module>
+        <module>springcloud-api</module>
     </modules>
 
     <parent>
