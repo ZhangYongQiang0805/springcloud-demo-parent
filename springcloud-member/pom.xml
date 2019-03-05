@@ -11,5 +11,24 @@
 
     <artifactId>springcloud-member</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>springcloud-api-member</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.demo</groupId>
+            <artifactId>springcloud-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- springboot整合mybatis -->
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+            <version>1.3.0</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
