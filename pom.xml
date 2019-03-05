@@ -13,6 +13,7 @@
         <module>springcloud-common</module>
         <module>springcloud-api</module>
         <module>springcloud-member</module>
+        <module>springcloud-zuul</module>
     </modules>
 
     <parent>
