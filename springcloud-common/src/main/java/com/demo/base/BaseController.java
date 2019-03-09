@@ -1,5 +1,7 @@
 package com.demo.base;
 
+import com.demo.constants.Constants;
+
 public class BaseController {
 
 	// 返回成功 ,data值为null

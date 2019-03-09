@@ -1,4 +1,4 @@
-package com.demo.base;
+package com.demo.constants;
 
 public interface Constants {
 
@@ -16,5 +16,8 @@ public interface Constants {
 	Integer HTTP_RES_CODE_200 = 200;
 	// 系统错误
 	Integer HTTP_RES_CODE_500 = 500;
+
+	// SMS MAIL类型
+	String SMS_MAIL = "sms_mail";
 
 }
