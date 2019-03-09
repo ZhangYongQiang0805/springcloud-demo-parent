@@ -7,6 +7,7 @@ import com.demo.dao.UserDao;
 import com.demo.model.UserEntity;
 import com.demo.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -61,11 +62,11 @@ public class MemberServiceImpl extends BaseController implements MemberService {
     }
 
     @Override
-    public ResponseBase register(UserEntity user) {
+    public ResponseBase register(@RequestBody UserEntity user) {
         int i = userDao.insertUser(user);
         if (i <= 0) {
             return setResultError("注册失败!");
         }
-        return setResultSuccess();
+        return setResultSuccess("注册成功!");
     }
 }
