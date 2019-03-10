@@ -20,4 +20,9 @@ public interface Constants {
 	// SMS MAIL类型
 	String SMS_MAIL = "sms_mail";
 
+	// 会员生成token
+	String MEMBER_TOKEN ="MEMBER_TOKEN";
+	// 会员超时时间
+	Long MEMBER_TOKEN_TIMEOUT =(long) (60*60*24*80);
+
 }

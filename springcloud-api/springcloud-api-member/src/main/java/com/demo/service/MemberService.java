@@ -21,6 +21,7 @@ public interface MemberService {
 
     /**
      * 设置redis的值
+     *
      * @param key
      * @param value
      * @return
@@ -30,6 +31,7 @@ public interface MemberService {
 
     /**
      * 获取Redis中key的值
+     *
      * @param key
      * @return
      */
@@ -38,6 +40,7 @@ public interface MemberService {
 
     /**
      * 数据库查询用户，根据用户id
+     *
      * @param userId
      * @return
      */
@@ -46,9 +49,26 @@ public interface MemberService {
 
     /**
      * 注册用户，并保存到数据库中
+     *
      * @param user
      * @return
      */
     @RequestMapping("/register")
     public ResponseBase register(@RequestBody UserEntity user);
+
+    /**
+     * 登录获取token
+     * @param user
+     * @return
+     */
+    @RequestMapping("/login")
+    public ResponseBase login(@RequestBody UserEntity user);
+
+    /**
+     * 根据token获取对象信息
+     * @param token
+     * @return
+     */
+    @RequestMapping("/findByToken")
+    public ResponseBase finTokenByUser(String token);
 }

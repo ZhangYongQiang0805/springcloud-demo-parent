@@ -1,5 +1,6 @@
 package com.demo.service.impl;
 
+import com.alibaba.druid.util.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.demo.base.BaseController;
 import com.demo.base.BaseRedisService;
@@ -8,6 +9,7 @@ import com.demo.dao.UserDao;
 import com.demo.model.UserEntity;
 import com.demo.mq.RegisterMailboxProducer;
 import com.demo.service.MemberService;
+import com.demo.utils.TokenUtils;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -95,5 +97,45 @@ public class MemberServiceImpl extends BaseController implements MemberService {
     private void sendMsg(String json) {
         ActiveMQQueue activeMQQueue = new ActiveMQQueue(MESSAGES_QUEUE);
         registerMailboxProducer.sendMsg(activeMQQueue, json);
+    }
+
+    @Override
+    public ResponseBase login(@RequestBody UserEntity user) {
+        String username = user.getUsername();
+        if (StringUtils.isEmpty(username)) {
+            return setResultError("用户名称不能为空!");
+        }
+        String password = user.getPassword();
+        if (StringUtils.isEmpty(password)) {
+            return setResultError("密码不能为空!");
+        }
+        UserEntity userEntity = userDao.login(username, password);
+        if (userEntity == null) {
+            return setResultError("账号或密码错误!");
+        }
+        // 生成token
+        String token = TokenUtils.getToken();
+        baseRedisService.setString(token, userEntity.getId() + "", null);
+        JSONObject JSONObject = new JSONObject();
+        JSONObject.put("token", token);
+        return setResultSuccess(JSONObject);
+    }
+
+    @Override
+    public ResponseBase finTokenByUser(String token) {
+        if (StringUtils.isEmpty(token)) {
+            return setResultError("token不能为空.");
+        }
+        String userId = baseRedisService.getString(token);
+        if (StringUtils.isEmpty(userId)) {
+            return setResultError("未查询到用户信息");
+        }
+        Long userIdl = Long.parseLong(userId);
+        UserEntity userEntity = userDao.findByID(userIdl);
+        if (userEntity == null) {
+            return setResultError("未查询到用户信息");
+        }
+        userEntity.setPassword(null);//去除密码
+        return setResultSuccess(userEntity);
     }
 }
