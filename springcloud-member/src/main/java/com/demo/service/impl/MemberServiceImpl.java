@@ -8,6 +8,7 @@ import com.demo.base.ResponseBase;
 import com.demo.dao.UserDao;
 import com.demo.model.UserEntity;
 import com.demo.mq.RegisterMailboxProducer;
+import com.demo.service.IpService;
 import com.demo.service.MemberService;
 import com.demo.utils.TokenUtils;
 import org.apache.activemq.command.ActiveMQQueue;
@@ -25,6 +26,8 @@ public class MemberServiceImpl extends BaseController implements MemberService {
     @Autowired
     private BaseRedisService baseRedisService;
     @Autowired
+    private IpService ipService;
+    @Autowired
     private UserDao userDao;
     @Autowired
     private RegisterMailboxProducer registerMailboxProducer;
@@ -35,7 +38,7 @@ public class MemberServiceImpl extends BaseController implements MemberService {
     public Map<String, Object> testRest() {
         Map<String, Object> result = new HashMap<>();
         result.put("errorCode", "200");
-        result.put("errorMsg", "success");
+        result.put("errorMsg", "success port:" + ipService.getPort());
         return result;
     }
 
