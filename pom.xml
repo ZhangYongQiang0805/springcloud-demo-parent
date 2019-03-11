@@ -15,6 +15,7 @@
         <module>springcloud-member</module>
         <module>springcloud-zuul</module>
         <module>springcloud-message</module>
+        <module>springcloud-ribbon-client</module>
     </modules>
 
     <parent>
