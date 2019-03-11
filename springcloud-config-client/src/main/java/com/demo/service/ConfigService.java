@@ -1,6 +1,5 @@
 package com.demo.service;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope//开启刷新
 public class ConfigService {
 
-    @Value("${hello}")
+//    @Value("${info.profile}")
     private String value;
 
     @RequestMapping("/")
