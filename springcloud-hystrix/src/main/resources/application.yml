@@ -1,0 +1,13 @@
+server:
+  port: 8768
+  context-path: /hystrix
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: hystrix
+feign:
+  hystrix:
+    enabled: true #feign启用熔断的开关，一定要开启

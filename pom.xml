@@ -19,6 +19,7 @@
         <module>springcloud-config-server</module>
         <module>springcloud-config-client</module>
         <module>springcloud-feign</module>
+        <module>springcloud-hystrix</module>
     </modules>
 
     <parent>
@@ -126,6 +127,11 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-feign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-hystrix</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
