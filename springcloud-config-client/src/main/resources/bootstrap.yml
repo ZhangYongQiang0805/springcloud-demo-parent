@@ -12,3 +12,6 @@ spring:
       uri: http://localhost:8765/ #配置中心服务器地址配置
       profile: dev
       label: master
+management:
+  security:
+    enabled: false
